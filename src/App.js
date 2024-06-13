@@ -83,8 +83,8 @@ const App = () => {
       )}
       <Navbar search={search}  setsearch={setBranch} />
       {(
-        <section  style={{ backgroundColor : "silver", minHeight : "80vh"}}>
-          <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto" style={{paddingTop : "10px" , paddingBottom : "20px"}}>
+        <section  style={{ backgroundColor : "silver", minHeight : "73vh"}}>
+          <div className="w-full xl:w-8/12 xl:mb-0 px-4 mx-auto" style={{paddingTop : "10px" , paddingBottom : "20px"}}>
             <div className="flex justify-between mb-4">
               <select
                 className="px-4 py-2 border rounded"
