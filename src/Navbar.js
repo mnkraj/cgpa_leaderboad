@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "./Designer.png";
 
 const Navbar = ({ search, setsearch }) => {
-  const [toggle,settoggle] = useState(false)
+  
   return (
     <div>
       <nav className="border-gray-200 bg-gray-900">
@@ -71,10 +71,7 @@ const Navbar = ({ search, setsearch }) => {
               type="button"
               className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               aria-controls="navbar-search"
-              aria-expanded="true"
-              onChange={(e)=>{
-                settoggle(!toggle)
-              }}
+              aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
               <svg
@@ -95,7 +92,7 @@ const Navbar = ({ search, setsearch }) => {
             </button>
           </div>
           <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
-            <div className={`relative mt-3 md:hidden ${toggle ? "md:hidden" : ""}`}>
+            <div className={`relative mt-3 md:hidden`}>
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
                   className="w-4 h-4 text-gray-400"
