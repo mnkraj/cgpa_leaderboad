@@ -100,7 +100,7 @@ const Footer = () => {
         </div>
 
         <div class="w-full bg-black/5 p-4 text-center">
-          © Designed and developed by some random guy
+          © copyright 2024 NIT Jamshedpur
         </div>
       </footer>
     </div>
