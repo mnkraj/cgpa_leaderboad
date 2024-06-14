@@ -83,7 +83,7 @@ const App = () => {
       )}
       <Navbar search={search}  setsearch={setBranch} />
       {(
-        <section  style={{ backgroundColor : "silver", minHeight : "73vh"}}>
+        <section className="bg-gray-900" style={{minHeight : "73vh"}}>
           <div className="w-full xl:w-8/12 xl:mb-0 px-4 mx-auto" style={{paddingTop : "10px" , paddingBottom : "20px"}}>
             <div className="flex justify-between mb-4">
               <select
@@ -105,11 +105,12 @@ const App = () => {
                 <option value="">All Branch</option>
                 <option value="CS">CSE</option>
                 <option value="EE">EE</option>
-                <option value="ME">ME</option>
-                <option value="EC">EC</option>
-                <option value="CE">CE</option>
-                <option value="PI">PI</option>
-                <option value="MM">MM</option>
+                <option value="ME">Mech</option>
+                <option value="EC">ECE</option>
+                <option value="CE">Civil</option>
+                <option value="PI">PIE</option>
+                <option value="MM">Meta</option>
+                <option value="CM">ECM</option>
               </select>
             </div>
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
