@@ -87,7 +87,7 @@ const App = () => {
           <div className="w-full xl:w-8/12 xl:mb-0 px-4 mx-auto" style={{paddingTop : "10px" , paddingBottom : "20px"}}>
             <div className="flex justify-between mb-4">
               <select
-                className="px-4 py-2 border rounded"
+                className="block p-2 pl-10 text-sm text-white border border-gray-600 rounded-lg bg-gray-800 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
               >
@@ -98,7 +98,8 @@ const App = () => {
                 <option value="2020">2020</option>
               </select>
               <select
-                className="px-4 py-2 border rounded"
+                className="block p-2 pl-10 text-sm text-white border border-gray-600 rounded-lg bg-gray-800 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
+
                 value={branch}
                 onChange={(e) => setBranch(e.target.value)}
               >
