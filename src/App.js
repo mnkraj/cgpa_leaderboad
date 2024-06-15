@@ -81,9 +81,9 @@ const App = () => {
           <Loading />
         </div>
       )}
-      <Navbar search={search}  setsearch={setBranch} />
+      <Navbar search={search}  setsearch={setsearch} />
       {(
-        <section className="bg-gray-900" style={{minHeight : "73vh"}}>
+        <section className="bg-gray-900" style={{minHeight : "75vh"}}>
           <div className="w-full xl:w-8/12 xl:mb-0 px-4 mx-auto" style={{paddingTop : "10px" , paddingBottom : "20px"}}>
             <div className="flex justify-between mb-4">
               <select
