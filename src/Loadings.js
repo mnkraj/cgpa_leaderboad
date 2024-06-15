@@ -5,7 +5,7 @@ import "./Spinner.css"; // Import CSS file for styling
 const Spinner = () => {
   return (
     <div className="spinner-container">
-      <PulseLoader color="#363bd6" size={40} />
+      <PulseLoader color="#363bd6" size={25} />
     </div>
   );
 };
