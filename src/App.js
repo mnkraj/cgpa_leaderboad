@@ -151,7 +151,7 @@ const App = () => {
                         <td className="table-cell" style={{ color: (student.Cgpa === 0 || !student.Cgpa) ? "red" : "" }}>
                           {!student.Cgpa ? 0 : student.Cgpa}
                         </td>
-                        <td className="table-cell" style={{ color: (student.Cgpa === 0 || !student.Cgpa) ? "red" : "" }}>
+                        <td className="table-cell" >
                           {student.Rank}
                         </td>
                       </tr>
