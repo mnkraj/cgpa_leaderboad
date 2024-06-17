@@ -3,14 +3,15 @@ import axios from "axios";
 import Loading from "./Loadings";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import './App.css';  // Make sure to create this CSS file and import it
+
 const App = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [year, setYear] = useState("");
   const [branch, setBranch] = useState("");
   const [loading, setLoading] = useState(false);
-  const [search,setsearch] = useState("")
-
+  const [search, setsearch] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -19,7 +20,7 @@ const App = () => {
       .then((response) => {
         let res = response.data;
         res.sort((a, b) => b.Cgpa - a.Cgpa);
-        res = calculateRanks(res)
+        res = calculateRanks(res);
         setData(res);
         setFilteredData(res);
         setLoading(false);
@@ -33,6 +34,7 @@ const App = () => {
   useEffect(() => {
     filterData();
   }, [year, branch]);
+
   useEffect(() => {
     const filterData = () => {
       let filtered = data.filter((student) =>
@@ -45,8 +47,8 @@ const App = () => {
 
     filterData();
   }, [search, data]);
+
   const filterData = () => {
-    // setLoading(true);
     let filtered = data;
     if (year) {
       filtered = filtered.filter((student) => student.Regn.startsWith(year));
@@ -57,16 +59,15 @@ const App = () => {
     filtered.sort((a, b) => b.Cgpa - a.Cgpa);
     const rankedData = calculateRanks(filtered);
     setFilteredData(rankedData);
-    // setLoading(false);
   };
 
   const calculateRanks = (students) => {
     let rank = 1;
-    let e=0;
+    let e = 0;
     for (let i = 0; i < students.length; i++) {
-      if (i > 0 && students[i].Cgpa == students[i - 1].Cgpa) e++;
+      if (i > 0 && students[i].Cgpa === students[i - 1].Cgpa) e++;
       if (i > 0 && students[i].Cgpa < students[i - 1].Cgpa) {
-        rank = i+1 - e;
+        rank = i + 1 - e;
       }
       students[i].Rank = rank;
     }
@@ -81,10 +82,10 @@ const App = () => {
           <Loading />
         </div>
       )}
-      <Navbar search={search}  setsearch={setsearch} />
+      <Navbar search={search} setsearch={setsearch} />
       {(
-        <section className="bg-gray-900" style={{minHeight : "75vh"}}>
-          <div className="w-full xl:w-8/12 xl:mb-0 px-4 mx-auto" style={{paddingTop : "10px" , paddingBottom : "20px"}}>
+        <section className="bg-gray-900" style={{ minHeight: "75vh" }}>
+          <div className="w-full xl:w-8/12 xl:mb-0 px-4 mx-auto" style={{ paddingTop: "10px", paddingBottom: "20px" }}>
             <div className="flex justify-between mb-4">
               <select
                 className="block p-2 pl-10 text-sm text-white border border-gray-600 rounded-lg bg-gray-800 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
@@ -99,7 +100,6 @@ const App = () => {
               </select>
               <select
                 className="block p-2 pl-10 text-sm text-white border border-gray-600 rounded-lg bg-gray-800 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
-
                 value={branch}
                 onChange={(e) => setBranch(e.target.value)}
               >
@@ -119,42 +119,39 @@ const App = () => {
                 <table className="items-center bg-transparent w-full border-collapse">
                   <thead>
                     <tr>
-                      <th
-                        className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-                        style={{ width: "10%" }}
-                      >
+                      <th className="table-header" style={{ width: "10%" }}>
                         SI No.
                       </th>
-                      <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                      <th className="table-header">
                         Regn No
                       </th>
-                      <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                      <th className="table-header">
                         Name
                       </th>
-                      <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                      <th className="table-header">
                         CGPA
                       </th>
-                      <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                      <th className="table-header">
                         Rank
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     {filteredData && filteredData.map((student, index) => (
-                      <tr key={student._id}>
-                        <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+                      <tr key={student._id} className={index % 2 === 0 ? "even-row" : "odd-row"}>
+                        <th className="table-cell">
                           {index + 1}
                         </th>
-                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+                        <td className="table-cell">
                           {student.Regn}
                         </td>
-                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        <td className="table-cell">
                           {student.Name}
                         </td>
-                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                          {student.Cgpa}
+                        <td className="table-cell" style={{ color: (student.Cgpa === 0 || !student.Cgpa) ? "red" : "" }}>
+                          {!student.Cgpa ? 0 : student.Cgpa}
                         </td>
-                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        <td className="table-cell" style={{ color: (student.Cgpa === 0 || !student.Cgpa) ? "red" : "" }}>
                           {student.Rank}
                         </td>
                       </tr>
