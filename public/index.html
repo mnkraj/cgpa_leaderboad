@@ -10,35 +10,57 @@
       name="description"
       content="Access the CGPA leaderboard of NIT Jamshedpur. Track and compare student performance in real-time. Check NIT Jamshedpur results and CGPA details."
     />
-    <meta name="keywords" content="CGPA, leaderboard, NIT Jamshedpur, student performance, academic results, real-time CGPA tracker, NIT Jamshedpur result, NIT Jamshedpur CGPA, student CGPA, university CGPA leaderboard" />
+    <meta
+      name="keywords"
+      content="CGPA, leaderboard, NIT Jamshedpur, student performance, academic results, real-time CGPA tracker, NIT Jamshedpur result, NIT Jamshedpur CGPA, student CGPA, university CGPA leaderboard"
+    />
 
     <meta property="og:title" content="CGPA Leaderboard | NIT Jamshedpur" />
-    <meta property="og:description" content="Track and compare student performance at NIT Jamshedpur with our real-time CGPA leaderboard. Check NIT Jamshedpur results and CGPA details." />
+    <meta
+      property="og:description"
+      content="Track and compare student performance at NIT Jamshedpur with our real-time CGPA leaderboard. Check NIT Jamshedpur results and CGPA details."
+    />
     <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
     <meta property="og:url" content="https://yourwebsiteurl.com" />
     <meta property="og:type" content="website" />
 
     <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "EducationalOrganization",
-      "name": "NIT Jamshedpur",
-      "url": "https://yourwebsiteurl.com",
-      "logo": "%PUBLIC_URL%/logo192.png",
-      "sameAs": [
-        "https://www.facebook.com/yourprofile",
-        "https://twitter.com/yourprofile",
-        "https://www.linkedin.com/in/yourprofile"
-      ]
-    }
+      {
+        "@context": "http://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "NIT Jamshedpur",
+        "url": "https://yourwebsiteurl.com",
+        "logo": "%PUBLIC_URL%/logo192.png",
+        "sameAs": [
+          "https://www.facebook.com/yourprofile",
+          "https://twitter.com/yourprofile",
+          "https://www.linkedin.com/in/yourprofile"
+        ]
+      }
     </script>
 
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css" />
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-
+    <link
+      rel="stylesheet"
+      href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Standard */
+      }
+    </style>
     <title>CGPA Leaderboard | NIT Jamshedpur - Track Student Performance</title>
     <title>CGPA Leaderboard</title>
     <title>NIT Jamshedpur CGPA Leaderboard</title>
@@ -52,18 +74,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
     <script>
-      document.addEventListener('contextmenu', function(e) {
-          alert("Right Click not allowed")
+      document.addEventListener("contextmenu", function (e) {
+        alert("Right Click not allowed");
+        e.preventDefault();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.keyCode === 123 ||
+          (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
+          (e.ctrlKey && e.keyCode === 85)
+        ) {
+          alert("Opening Developer tools not allowed");
           e.preventDefault();
+        }
+        if (e.ctrlKey && (e.key === "c" || e.key === "x" || e.key === "u")) {
+          alert("Copying the text not allowed");
+          e.preventDefault();
+        }
       });
-      document.addEventListener('keydown', function(e) {
-          if (e.keyCode === 123 || 
-              (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || 
-              (e.ctrlKey && e.keyCode === 85)) {
-              alert("Opening Developer tools not allowed")
-              e.preventDefault();
-          }
-      });
-  </script>
+    </script>
   </body>
 </html>
