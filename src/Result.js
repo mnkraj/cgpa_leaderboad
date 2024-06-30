@@ -26,20 +26,28 @@ const Result = () => {
         { regn }
       );
       // toast.remove()
-      toast.success(`Result Fetched Successfully`);
+      
+      // console.log(response.data)
+      if(!response.data.success)
+        {
+          toast.error(`Inavlid Regn no ${regn}`)
+          return ;
+        }
+        // toast.success(`Result Fetched Successfully`);
       setData(response.data);
+      
     } catch (error) {
       // toast.remove()
       // toast.error(`Error fetching data: ${error.message}`);
       console.error("Error fetching data:", error);
     } finally {
-      toast.remove()
+      // toast.remove()
       setLoading1(false);
     }
   };
 
   useEffect(() => {
-    toast.loading(`Fetching Result for ${regn}`);
+    // toast.loading(`Fetching Result for ${regn}`);
     fetchData();
   }, [regn]);
 

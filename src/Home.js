@@ -15,7 +15,7 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-    toast.loading("Fetching Data ...");
+    // toast.loading("Fetching Data ...");
     axios
       .get("https://cgpa-server.vercel.app/api/v1/getresults")
       .then((response) => {
@@ -25,13 +25,13 @@ const Home = () => {
         setData(res);
         setFilteredData(res);
         setLoading(false);
-        toast.remove();
-        toast.success("Data Fetched Successfully");
+        // toast.remove();
+        // toast.success("Data Fetched Successfully");
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        toast.remove();
-        toast.error("Error fetching data");
+        // toast.remove();
+        // toast.error("Error fetching data");
         setLoading(false);
       });
   }, []);
