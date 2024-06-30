@@ -4,7 +4,8 @@ import Loading from "./Loadings";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import toast, { Toaster } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate } from "react-router-dom";
+
 const Home = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -12,10 +13,9 @@ const Home = () => {
   const [branch, setBranch] = useState("");
   const [loading, setLoading] = useState(false);
   const [search, setsearch] = useState("");
-
+  const navigate = useNavigate()
   useEffect(() => {
     setLoading(true);
-    // toast.loading("Fetching Data ...");
     axios
       .get("https://cgpa-server.vercel.app/api/v1/getresults")
       .then((response) => {
@@ -25,24 +25,16 @@ const Home = () => {
         setData(res);
         setFilteredData(res);
         setLoading(false);
-        // toast.remove();
-        // toast.success("Data Fetched Successfully");
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        // toast.remove();
-        // toast.error("Error fetching data");
         setLoading(false);
       });
   }, []);
 
   useEffect(() => {
     filterData();
-  }, [year, branch]);
-
-  useEffect(() => {
-    filterData();
-  }, [search, data]);
+  }, [year, branch, search, data]);
 
   const filterData = () => {
     let filtered = data;
@@ -73,6 +65,11 @@ const Home = () => {
     return students;
   };
 
+  const handleButtonClick = (regn) => {
+    // Navigate to the result page for the specific registration number
+    navigate(`/result/${regn}`);
+  };
+
   return (
     <div>
       {loading && (
@@ -80,7 +77,7 @@ const Home = () => {
           <Loading />
         </div>
       )}
-      <Navbar search={search} setsearch={setsearch} disab= {true} />
+      <Navbar search={search} setsearch={setsearch} disab={true} />
       <section className="bg-gray-900" style={{ minHeight: "75vh" }}>
         <div
           className="w-full xl:w-8/12 xl:mb-0 px-4 mx-auto"
@@ -124,8 +121,10 @@ const Home = () => {
                     </th>
                     <th className="table-header">Regn No</th>
                     <th className="table-header">Name</th>
+                    <th className="table-header" style={{width : "15%"}}>Actions</th>
                     <th className="table-header">CGPA</th>
                     <th className="table-header">Rank</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -135,23 +134,30 @@ const Home = () => {
                         key={student._id}
                         className={index % 2 === 0 ? "even-row" : "odd-row"}
                       >
-                        <th className="table-cell">{index + 1}</th>
-                        <Link to={`/result/${student.Regn}`} className="table-cell">
-                          <td >{student.Regn}</td>
-                        </Link>
-                        <Link to={`/result/${student.Regn}` } className="table-cell">
-                          <td >{student.Name}</td>
-                        </Link>
+                        <td className="table-cell items-center">{index + 1}</td>
+                        <td className="table-cell items-center">{student.Regn}</td>
+                        <td className="table-cell items-center">{student.Name}</td>
+                        <td className="table-cell items-center">
+                          <button
+                            className="btn btn-primary items-center "
+                            onClick={() => handleButtonClick(student.Regn)}
+                          >
+                            View Details
+                          </button>
+                        </td>
                         <td
                           className="table-cell"
                           style={{
                             color:
-                              student.Cgpa === 0 || !student.Cgpa ? "red" : "",
+                              student.Cgpa === 0 || !student.Cgpa
+                                ? "red"
+                                : undefined,
                           }}
                         >
                           {!student.Cgpa ? 0 : student.Cgpa}
                         </td>
                         <td className="table-cell">{student.Rank}</td>
+                        
                       </tr>
                     ))}
                 </tbody>
