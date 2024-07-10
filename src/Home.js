@@ -17,7 +17,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://cgpa-server.vercel.app/api/v1/getresults")
+      .get("https://cgpa-server.onrender.com/api/v1/getresults")
       .then((response) => {
         let res = response.data;
         res.sort((a, b) => b.Cgpa - a.Cgpa);
