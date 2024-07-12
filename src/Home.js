@@ -16,6 +16,9 @@ const Home = () => {
   const navigate = useNavigate()
   useEffect(() => {
     setLoading(true);
+    const response = axios.get(
+      "https://cgpa-server.onrender.com/api/v1/getresults"
+    );
     axios
       .get("https://cgpa-server.vercel.app/api/v1/getresults")
       .then((response) => {
