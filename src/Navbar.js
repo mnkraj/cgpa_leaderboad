@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "./Designer.png";
-
+import { TypeAnimation } from 'react-type-animation';
 const Navbar = ({ search, setsearch , disab }) => {
   
   return (
@@ -9,7 +9,18 @@ const Navbar = ({ search, setsearch , disab }) => {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="/" className="flex items-center">
             <span className="self-center text-2xl font-bold whitespace-nowrap text-white">
-              CGPA Leaderboard
+            <TypeAnimation
+                sequence={[
+                  "CGPA LEADERBOARD",
+                  1000,
+                  "NIT JSR",
+                  1000,
+                ]}
+                wrapper="span"
+                speed={50}
+                style={{ display: 'inline-block', whiteSpace: 'nowrap',width :"210px" }}
+                repeat={Infinity}
+              />
             </span>
           </a>
           <div className="flex md:order-2">
