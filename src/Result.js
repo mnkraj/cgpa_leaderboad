@@ -13,30 +13,28 @@ const Result = () => {
   const [data, setData] = useState({
     name: "",
     regn: "",
-    secret : "",
+    secret: "",
     semresults: [],
   });
   const [search, setsearch] = useState("");
 
   const fetchData = async () => {
     setLoading1(true);
-    
+
     try {
       const response = await axios.post(
         "https://cgpa-server.onrender.com/api/v1/getindividualresult",
         { regn }
       );
       // toast.remove()
-      
+
       // console.log(response.data)
-      if(!response.data.success)
-        {
-          toast.error(`Inavlid Regn no ${regn}`)
-          return ;
-        }
-        // toast.success(`Result Fetched Successfully`);
+      if (!response.data.success) {
+        toast.error(`Inavlid Regn no ${regn}`);
+        return;
+      }
+      // toast.success(`Result Fetched Successfully`);
       setData(response.data);
-      
     } catch (error) {
       // toast.remove()
       // toast.error(`Error fetching data: ${error.message}`);
@@ -99,7 +97,6 @@ const Result = () => {
                         <td className="table-cell text-center">
                           <a
                             href={`${process.env.REACT_APP_RESULT_LINK_1}${data.secret}${process.env.REACT_APP_RESULT_LINK_2}${result.sem}${process.env.REACT_APP_RESULT_LINK_3}`}
-                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-500 underline"
                           >
