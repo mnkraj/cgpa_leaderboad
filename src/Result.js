@@ -17,6 +17,10 @@ const Result = () => {
     semresults: [],
   });
   const [search, setsearch] = useState("");
+  const handleButtonClick = (secret , sem) => {
+    const url = `${process.env.REACT_APP_RESULT_LINK_1}${secret}${process.env.REACT_APP_RESULT_LINK_2}${sem}${process.env.REACT_APP_RESULT_LINK_3}`;
+    window.open(url, '_blank');
+};
 
   const fetchData = async () => {
     setLoading1(true);
@@ -94,14 +98,13 @@ const Result = () => {
                         <td className="table-cell">{result.sem}</td>
                         <td className="table-cell">{result.sgpa}</td>
                         <td className="table-cell">{result.cgpa}</td>
-                        <td className="table-cell text-center">
-                          <a
-                            href={`${process.env.REACT_APP_RESULT_LINK_1}${data.secret}${process.env.REACT_APP_RESULT_LINK_2}${result.sem}${process.env.REACT_APP_RESULT_LINK_3}`}
-                            rel="noopener noreferrer"
-                            className="text-blue-500 underline"
+                        <td className="table-cell items-center text-center">
+                          <button
+                            className="btn btn-primary items-center text-blue-500 underline text-center"
+                            onClick={() => handleButtonClick(`${data.secret}`,`${result.sem}`)}
                           >
                             Download
-                          </a>
+                          </button>
                         </td>
                       </tr>
                     ))}
