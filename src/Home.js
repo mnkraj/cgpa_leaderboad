@@ -140,9 +140,9 @@ const Home = () => {
                         <td className="table-cell items-center">{index + 1}</td>
                         <td className="table-cell items-center">{student.Regn}</td>
                         <td className="table-cell items-center">{student.Name}</td>
-                        <td className="table-cell items-center">
+                        <td className="table-cell items-center text-center">
                           <button
-                            className="btn btn-primary items-center "
+                            className="btn btn-primary items-center text-blue-500 underline text-center"
                             onClick={() => handleButtonClick(student.Regn)}
                           >
                             View Details

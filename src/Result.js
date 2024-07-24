@@ -13,6 +13,7 @@ const Result = () => {
   const [data, setData] = useState({
     name: "",
     regn: "",
+    secret : "",
     semresults: [],
   });
   const [search, setsearch] = useState("");
@@ -83,6 +84,7 @@ const Result = () => {
                       <th className="table-header text-center">Semester</th>
                       <th className="table-header text-center">SGPA</th>
                       <th className="table-header text-center">CGPA</th>
+                      <th className="table-header text-center">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -94,6 +96,16 @@ const Result = () => {
                         <td className="table-cell">{result.sem}</td>
                         <td className="table-cell">{result.sgpa}</td>
                         <td className="table-cell">{result.cgpa}</td>
+                        <td className="table-cell text-center">
+                          <a
+                            href={`${process.env.REACT_APP_RESULT_LINK_1}${data.secret}${process.env.REACT_APP_RESULT_LINK_2}${result.sem}${process.env.REACT_APP_RESULT_LINK_3}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-500 underline"
+                          >
+                            Download
+                          </a>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
