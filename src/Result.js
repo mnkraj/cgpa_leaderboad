@@ -18,8 +18,13 @@ const Result = () => {
   });
   const [search, setsearch] = useState("");
   const handleButtonClick = (secret , sem) => {
-    const url = `${process.env.REACT_APP_RESULT_LINK_1}${secret}${process.env.REACT_APP_RESULT_LINK_2}${sem}${process.env.REACT_APP_RESULT_LINK_3}.pdf`;
-    window.open(url, '_blank');
+    const url = `${process.env.REACT_APP_RESULT_LINK_1}${secret}${process.env.REACT_APP_RESULT_LINK_2}${sem}${process.env.REACT_APP_RESULT_LINK_3}`;
+    const link = document.createElement('a');
+        link.href = url;
+        link.download = `${sem}_${regn}.pdf`; // Set the download attribute with a default filename
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
 };
 
   const fetchData = async () => {
