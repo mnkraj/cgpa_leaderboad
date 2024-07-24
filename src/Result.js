@@ -101,7 +101,7 @@ const Result = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-500 underline"
-                            download={`${result.sem}_${regn}.pdf`}
+                            download={`commanreport.pdf`}
                           >
                             Download
                           </a>
