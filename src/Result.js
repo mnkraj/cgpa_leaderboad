@@ -18,7 +18,7 @@ const Result = () => {
   });
   const [search, setsearch] = useState("");
   const handleButtonClick = (secret , sem) => {
-    const url = `${process.env.REACT_APP_RESULT_LINK_1}${secret}${process.env.REACT_APP_RESULT_LINK_2}${sem}${process.env.REACT_APP_RESULT_LINK_3}`;
+    const url = `${process.env.REACT_APP_RESULT_LINK_1}${secret}${process.env.REACT_APP_RESULT_LINK_2}${sem}${process.env.REACT_APP_RESULT_LINK_3}.pdf`;
     window.open(url, '_blank');
 };
 
