@@ -119,7 +119,7 @@ const Navbar = ({ search, setsearch, disab }) => {
                         handleResultPortalClick(true);
                       }}
                     >
-                      Institute LAN/WIFI
+                      Institute LAN
                     </a>
                     <a
                       href="#"
