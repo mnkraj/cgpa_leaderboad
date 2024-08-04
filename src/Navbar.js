@@ -81,6 +81,57 @@ const Navbar = ({ search, setsearch, disab }) => {
               className="block w-full p-2 pl-10 text-sm text-white border border-gray-600 rounded-lg bg-gray-800 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Regn. no"
             />
+            <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-900 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-gray-900 ">
+              <li>
+                <a
+                  href="/"
+                  className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                  aria-current="page"
+                >
+                  Home
+                </a>
+              </li>
+              <li className="relative block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-gray-900 dark:border-gray-700">
+                <button
+                  className="inline-flex items-center"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  Result Portal
+                </button>
+                {dropdownOpen && (
+                  <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleResultPortalClick(true);
+                      }}
+                    >
+                      Institute LAN
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleResultPortalClick(false);
+                      }}
+                    >
+                      Mobile Networks
+                    </a>
+                  </div>
+                )}
+              </li>
+              <li>
+                <a
+                  href="https://github.com/mnkraj/cgpa_server"
+                  className="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-gray-900 dark:border-gray-700"
+                >
+                  Repository
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
         <div
