@@ -31,7 +31,7 @@ const Result = () => {
 
       // console.log(response.data)
       if (!response.data.success) {
-        toast.error(`Inavlid Regn no ${regn} or Server unavailable`);
+        toast.error(`Result Portal Server Down OR Inavlid Regn no ${regn}`);
         return;
       }
       // toast.success(`Result Fetched Successfully`);
