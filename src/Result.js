@@ -83,7 +83,7 @@ const Result = () => {
                       <th className="table-header text-center">Semester</th>
                       <th className="table-header text-center">SGPA</th>
                       <th className="table-header text-center">CGPA</th>
-                      {/* <th className="table-header text-center">Action</th> */}
+                      <th className="table-header text-center">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -95,7 +95,7 @@ const Result = () => {
                         <td className="table-cell">{result.sem}</td>
                         <td className="table-cell">{result.sgpa}</td>
                         <td className="table-cell">{result.cgpa}</td>
-                        {/* <td className="table-cell text-center">
+                        <td className="table-cell text-center">
                           <a
                             href={`${process.env.REACT_APP_RESULT_LINK_1}${data.secret}${process.env.REACT_APP_RESULT_LINK_2}${result.sem}${process.env.REACT_APP_RESULT_LINK_3}`}
                             target="_blank"
@@ -105,7 +105,7 @@ const Result = () => {
                           >
                             Download
                           </a>
-                        </td> */}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
