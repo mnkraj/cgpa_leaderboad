@@ -103,7 +103,7 @@ const Result = () => {
                             className="text-blue-500 underline"
                             download={`commanreport.pdf`}
                           >
-                            Download
+                            View
                           </a>
                         </td>
                       </tr>
