@@ -98,7 +98,9 @@ const Footer = () => {
             </a>
           </div>
         </div>
-
+        <div class="w-full bg-black/5  text-center">
+          Last Updated 13/06/2024
+        </div>
         <div class="w-full bg-black/5 p-4 text-center">
           © copyright 2024 NIT JSR
         </div>
