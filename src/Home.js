@@ -17,10 +17,10 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     const response = axios.get(
-      "https://cgpa-server-1.onrender.com/api/v1/getresults"
+      `${process.env.REACT_APP_BACKEND_LINK_2}/api/v1/getresults`
     );
     axios
-      .get("https://cgpa-server.vercel.app/api/v1/getresults")
+      .get(`${process.env.REACT_APP_BACKEND_LINK_1}/api/v1/getresults`)
       .then((response) => {
         let res = response.data;
         res.sort((a, b) => b.Cgpa - a.Cgpa);

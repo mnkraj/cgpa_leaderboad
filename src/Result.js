@@ -24,7 +24,7 @@ const Result = () => {
 
     try {
       const response = await axios.post(
-        "https://cgpa-server-1.onrender.com/api/v1/getindividualresult",
+        `${process.env.REACT_APP_BACKEND_LINK_2}/api/v1/getindividualresult`,
         { regn }
       );
       // toast.remove()
