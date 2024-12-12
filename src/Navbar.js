@@ -79,7 +79,7 @@ const Navbar = ({ search, setsearch, disab }) => {
               onChange={(e) => setsearch(e.target.value)}
               disabled={!disab}
               className="block w-full p-2 pl-10 text-sm text-white border border-gray-600 rounded-lg bg-gray-800 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Regn. no"
+              placeholder="Search..."
             />
           </div>
         </div>
