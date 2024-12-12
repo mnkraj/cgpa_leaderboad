@@ -48,7 +48,7 @@ const Home = () => {
       filtered = filtered.filter((student) => student.Regn.includes(branch));
     }
     if (search) {
-      filtered = filtered.filter((student) => student.Regn.includes(search));
+      filtered = filtered.filter((student) => (student.Regn.includes(search) || student.Name.toLowerCase().includes(search.toLowerCase()) ));
     }
     filtered.sort((a, b) => b.Cgpa - a.Cgpa);
     const rankedData = calculateRanks(filtered);
