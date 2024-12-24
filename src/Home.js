@@ -70,7 +70,8 @@ const Home = () => {
 
   const handleButtonClick = (regn) => {
     // Navigate to the result page for the specific registration number
-    navigate(`/result/${regn}`);
+    // navigate(`/result/${regn}`);
+    window.open(`https://nitjsr.vercel.app/result/${regn}`,"_blank")
   };
 
   return (
@@ -119,14 +120,15 @@ const Home = () => {
               <table className="items-center bg-transparent w-full border-collapse">
                 <thead>
                   <tr>
-                    <th className="table-header" style={{ width: "10%" }}>
+                    <th className="table-header" style={{ width: "0%" }}>
                       SI No.
                     </th>
-                    <th className="table-header">Regn No</th>
+                    <th className="table-header"style={{width : "0%"}}>Regn No</th>
                     <th className="table-header">Name</th>
-                    <th className="table-header" style={{width : "15%"}}>Actions</th>
-                    <th className="table-header">CGPA</th>
-                    <th className="table-header">Rank</th>
+                    <th className="table-header"style={{width : "0%"}}>Last Sem SGPA</th>
+                    <th className="table-header"style={{width : "0%"}}>CGPA</th>
+                    <th className="table-header" style={{width : "0%"}}>Actions</th>
+                    <th className="table-header"style={{width : "0%"}}>Rank</th>
                     
                   </tr>
                 </thead>
@@ -137,19 +139,23 @@ const Home = () => {
                         key={student._id}
                         className={index % 2 === 0 ? "even-row" : "odd-row"}
                       >
-                        <td className="table-cell items-center">{index + 1}</td>
-                        <td className="table-cell items-center">{student.Regn}</td>
+                        <td className="table-cell items-center text-center">{index + 1}</td>
+                        <td className="table-cell items-center text-center">{student.Regn}</td>
                         <td className="table-cell items-center">{student.Name}</td>
-                        <td className="table-cell items-center text-center">
-                          <button
-                            className="btn btn-primary items-center text-blue-500 underline text-center"
-                            onClick={() => handleButtonClick(student.Regn)}
-                          >
-                            View Details
-                          </button>
+                        
+                        <td
+                          className="table-cell text-center"
+                          style={{
+                            color:
+                              student.Sgpa === 0 || !student.Sgpa
+                                ? "red"
+                                : undefined,
+                          }}
+                        >
+                          {!student.Sgpa ? 0 : student.Sgpa}
                         </td>
                         <td
-                          className="table-cell"
+                          className="table-cell text-center"
                           style={{
                             color:
                               student.Cgpa === 0 || !student.Cgpa
@@ -159,7 +165,15 @@ const Home = () => {
                         >
                           {!student.Cgpa ? 0 : student.Cgpa}
                         </td>
-                        <td className="table-cell">{student.Rank}</td>
+                        <td className="table-cell items-center text-center">
+                          <button
+                            className="text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none "
+                            onClick={() => handleButtonClick(student.Regn)}
+                          >
+                            <small>View Details</small>
+                          </button>
+                        </td>
+                        <td className="table-cell text-center">{student.Rank}</td>
                         
                       </tr>
                     ))}
