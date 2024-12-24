@@ -92,15 +92,15 @@ const Result = () => {
                         key={index}
                         className={index % 2 === 0 ? "even-row" : "odd-row"}
                       >
-                        <td className="table-cell">{result.sem}</td>
+                        <td className="table-cell" style={{width : "0%"}}>{result.sem}</td>
                         <td className="table-cell">{result.sgpa}</td>
                         <td className="table-cell">{result.cgpa}</td>
-                        <td className="table-cell text-center">
+                        <td className="table-cell text-center" style={{width : "0%"}}>
                           <a
                             href={`${process.env.REACT_APP_RESULT_LINK_1}${data.secret}${process.env.REACT_APP_RESULT_LINK_2}${result.sem}${process.env.REACT_APP_RESULT_LINK_3}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-500 underline"
+                            className="text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none "
                             download={`commanreport.pdf`}
                           >
                             View
