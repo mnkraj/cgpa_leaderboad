@@ -120,52 +120,35 @@ const Home = () => {
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
             <div className="block w-full overflow-x-auto">
               <table className="items-center bg-transparent w-full border-collapse">
-                <thead>
+                <thead className="sticky top-0 bg-gray-800 z-10 text-white">
                   <tr>
-                    <th className="table-header" style={{ width: "0%" }}>
+                    <th className="table-header" style={{ width: "5%" }}>
                       SI No.
                     </th>
-                    <th className="table-header" style={{ width: "0%" }}>
+                    <th className="table-header" style={{ width: "15%" }}>
                       Regn No
                     </th>
-                    <th className="table-header">Name</th>
-                    <th className="table-header" style={{ width: "0%" }}>
+                    <th className="table-header" style={{ width: "25%" }}>
+                      Name
+                    </th>
+                    <th className="table-header" style={{ width: "15%" }}>
                       Last Sem SGPA
                     </th>
-                    <th className="table-header" style={{ width: "0%" }}>
+                    <th className="table-header" style={{ width: "15%" }}>
                       CGPA
                     </th>
-                    <th className="table-header" style={{ width: "0%" }}>
+                    <th className="table-header" style={{ width: "15%" }}>
                       Actions
                     </th>
                     <th
                       className="table-header"
-                      style={{
-                        width: "100%",
-                        cursor: "pointer",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        height: "100%", // Ensure it takes the full cell height
-                        verticalAlign: "middle", // Align content in the middle
-                      }}
+                      style={{ width: "10%", cursor: "pointer" }}
                       onClick={() => {
                         setSortByCgpa((prev) => !prev);
                         filterData();
                       }}
                     >
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          gap : "5px",
-                          padding : "10px",
-                          justifyContent: "center",
-                          height: "100%", // Make the container match the cell height
-                        }}
-                      >
+                      <div className="flex flex-col items-center">
                         <div>Rank</div>
                         <img
                           src={icon}
@@ -173,7 +156,6 @@ const Home = () => {
                           style={{
                             width: "20px",
                             height: "20px",
-                            marginTop: "5px",
                             transform: sortByCgpa
                               ? "rotate(0deg)"
                               : "rotate(180deg)",
@@ -192,15 +174,9 @@ const Home = () => {
                         key={student._id}
                         className={index % 2 === 0 ? "even-row" : "odd-row"}
                       >
-                        <td className="table-cell items-center text-center">
-                          {index + 1}
-                        </td>
-                        <td className="table-cell items-center text-center">
-                          {student.Regn}
-                        </td>
-                        <td className="table-cell items-center">
-                          {student.Name}
-                        </td>
+                        <td className="table-cell text-center">{index + 1}</td>
+                        <td className="table-cell text-center">{student.Regn}</td>
+                        <td className="table-cell">{student.Name}</td>
                         <td
                           className="table-cell text-center"
                           style={{
@@ -223,7 +199,7 @@ const Home = () => {
                         >
                           {!student.Cgpa ? 0 : student.Cgpa}
                         </td>
-                        <td className="table-cell items-center text-center">
+                        <td className="table-cell text-center">
                           <button
                             className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
                             onClick={() => handleButtonClick(student.Regn)}
