@@ -4,7 +4,8 @@ import Loading from "./Loadings";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import toast, { Toaster } from "react-hot-toast";
-import { Link ,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import icon from "./sort-icon.png";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -13,18 +14,16 @@ const Home = () => {
   const [branch, setBranch] = useState("");
   const [loading, setLoading] = useState(false);
   const [search, setsearch] = useState("");
-  const navigate = useNavigate()
+  const [sortByCgpa, setSortByCgpa] = useState(true);
+  const navigate = useNavigate();
+
   useEffect(() => {
     setLoading(true);
-    const response = axios.get(
-      `${process.env.REACT_APP_BACKEND_LINK_2}/api/v1/getresults`
-    );
     axios
       .get(`${process.env.REACT_APP_BACKEND_LINK_1}/api/v1/getresults`)
       .then((response) => {
         let res = response.data;
-        res.sort((a, b) => b.Cgpa - a.Cgpa);
-        res = calculateRanks(res);
+        res = sortAndCalculateRanks(res, "Cgpa"); // Initial sorting by CGPA
         setData(res);
         setFilteredData(res);
         setLoading(false);
@@ -37,7 +36,7 @@ const Home = () => {
 
   useEffect(() => {
     filterData();
-  }, [year, branch, search, data]);
+  }, [year, branch, search, data, sortByCgpa]);
 
   const filterData = () => {
     let filtered = data;
@@ -48,19 +47,24 @@ const Home = () => {
       filtered = filtered.filter((student) => student.Regn.includes(branch));
     }
     if (search) {
-      filtered = filtered.filter((student) => (student.Regn.includes(search) || student.Name.toLowerCase().includes(search.toLowerCase()) ));
+      filtered = filtered.filter(
+        (student) =>
+          student.Regn.includes(search) ||
+          student.Name.toLowerCase().includes(search.toLowerCase())
+      );
     }
-    filtered.sort((a, b) => b.Cgpa - a.Cgpa);
-    const rankedData = calculateRanks(filtered);
-    setFilteredData(rankedData);
+    const rankKey = sortByCgpa ? "Cgpa" : "Sgpa";
+    filtered = sortAndCalculateRanks(filtered, rankKey);
+    setFilteredData(filtered);
   };
 
-  const calculateRanks = (students) => {
+  const sortAndCalculateRanks = (students, key) => {
     let rank = 1;
     let e = 0;
+    students.sort((a, b) => (b[key] || 0) - (a[key] || 0));
     for (let i = 0; i < students.length; i++) {
-      if (i > 0 && students[i].Cgpa === students[i - 1].Cgpa) e++;
-      if (i > 0 && students[i].Cgpa < students[i - 1].Cgpa) {
+      if (i > 0 && students[i][key] === students[i - 1][key]) e++;
+      if (i > 0 && students[i][key] < students[i - 1][key]) {
         rank = i + 1 - e;
       }
       students[i].Rank = rank;
@@ -69,9 +73,7 @@ const Home = () => {
   };
 
   const handleButtonClick = (regn) => {
-    // Navigate to the result page for the specific registration number
-    // navigate(`/result/${regn}`);
-    window.open(`https://nitjsr.vercel.app/result/${regn}`,"_blank")
+    window.open(`https://nitjsr.vercel.app/result/${regn}`, "_blank");
   };
 
   return (
@@ -123,13 +125,64 @@ const Home = () => {
                     <th className="table-header" style={{ width: "0%" }}>
                       SI No.
                     </th>
-                    <th className="table-header"style={{width : "0%"}}>Regn No</th>
+                    <th className="table-header" style={{ width: "0%" }}>
+                      Regn No
+                    </th>
                     <th className="table-header">Name</th>
-                    <th className="table-header"style={{width : "0%"}}>Last Sem SGPA</th>
-                    <th className="table-header"style={{width : "0%"}}>CGPA</th>
-                    <th className="table-header" style={{width : "0%"}}>Actions</th>
-                    <th className="table-header"style={{width : "0%"}}>Rank</th>
-                    
+                    <th className="table-header" style={{ width: "0%" }}>
+                      Last Sem SGPA
+                    </th>
+                    <th className="table-header" style={{ width: "0%" }}>
+                      CGPA
+                    </th>
+                    <th className="table-header" style={{ width: "0%" }}>
+                      Actions
+                    </th>
+                    <th
+                      className="table-header"
+                      style={{
+                        width: "100%",
+                        cursor: "pointer",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        height: "100%", // Ensure it takes the full cell height
+                        verticalAlign: "middle", // Align content in the middle
+                      }}
+                      onClick={() => {
+                        setSortByCgpa((prev) => !prev);
+                        filterData();
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap : "5px",
+                          padding : "10px",
+                          justifyContent: "center",
+                          height: "100%", // Make the container match the cell height
+                        }}
+                      >
+                        <div>Rank</div>
+                        <img
+                          src={icon}
+                          alt="Sort Icon"
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                            marginTop: "5px",
+                            transform: sortByCgpa
+                              ? "rotate(0deg)"
+                              : "rotate(180deg)",
+                            transition: "transform 0.3s ease",
+                          }}
+                          title={`Sort by ${sortByCgpa ? "SGPA" : "CGPA"}`}
+                        />
+                      </div>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -139,10 +192,15 @@ const Home = () => {
                         key={student._id}
                         className={index % 2 === 0 ? "even-row" : "odd-row"}
                       >
-                        <td className="table-cell items-center text-center">{index + 1}</td>
-                        <td className="table-cell items-center text-center">{student.Regn}</td>
-                        <td className="table-cell items-center">{student.Name}</td>
-                        
+                        <td className="table-cell items-center text-center">
+                          {index + 1}
+                        </td>
+                        <td className="table-cell items-center text-center">
+                          {student.Regn}
+                        </td>
+                        <td className="table-cell items-center">
+                          {student.Name}
+                        </td>
                         <td
                           className="table-cell text-center"
                           style={{
@@ -167,14 +225,15 @@ const Home = () => {
                         </td>
                         <td className="table-cell items-center text-center">
                           <button
-                            className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5   focus:outline-none"
+                            className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
                             onClick={() => handleButtonClick(student.Regn)}
                           >
                             <small>View Details</small>
                           </button>
                         </td>
-                        <td className="table-cell text-center">{student.Rank}</td>
-                        
+                        <td className="table-cell text-center">
+                          {student.Rank}
+                        </td>
                       </tr>
                     ))}
                 </tbody>
