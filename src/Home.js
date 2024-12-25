@@ -14,7 +14,7 @@ const Home = () => {
   const [branch, setBranch] = useState("");
   const [loading, setLoading] = useState(false);
   const [search, setsearch] = useState("");
-  const [sortByCgpa, setSortByCgpa] = useState(true);
+  const [sortByCgpa, setSortByCgpa] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
