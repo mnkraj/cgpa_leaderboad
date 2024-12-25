@@ -167,7 +167,7 @@ const Home = () => {
                         </td>
                         <td className="table-cell items-center text-center">
                           <button
-                            className="text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none "
+                            className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5   focus:outline-none"
                             onClick={() => handleButtonClick(student.Regn)}
                           >
                             <small>View Details</small>

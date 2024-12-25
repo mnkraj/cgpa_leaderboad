@@ -100,7 +100,7 @@ const Result = () => {
                             href={`${process.env.REACT_APP_RESULT_LINK_1}${data.secret}${process.env.REACT_APP_RESULT_LINK_2}${result.sem}${process.env.REACT_APP_RESULT_LINK_3}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-white bg-blue-400 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none "
+                            className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5   focus:outline-none "
                             download={`commanreport.pdf`}
                           >
                             View
