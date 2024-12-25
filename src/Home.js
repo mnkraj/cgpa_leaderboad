@@ -53,7 +53,7 @@ const Home = () => {
           student.Name.toLowerCase().includes(search.toLowerCase())
       );
     }
-    const rankKey = sortByCgpa ? "Cgpa" : "Sgpa";
+    const rankKey = sortByCgpa ? "Sgpa" : "Cgpa";
     filtered = sortAndCalculateRanks(filtered, rankKey);
     setFilteredData(filtered);
   };
