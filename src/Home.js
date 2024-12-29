@@ -51,7 +51,7 @@ const Home = () => {
     if (search) {
       filtered = filtered.filter(
         (student) =>
-          student.Regn.includes(search) ||
+          student.Regn.toLowerCase().includes(search.toLowerCase()) ||
           student.Name.toLowerCase().includes(search.toLowerCase())
       );
     }
