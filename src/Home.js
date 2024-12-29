@@ -19,6 +19,8 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
+    let r1 = axios.get(`${process.env.REACT_APP_BACKEND_LINK_2}/api/v1/getresults`)
+    console.log(r1)
     axios
       .get(`${process.env.REACT_APP_BACKEND_LINK_1}/api/v1/getresults`)
       .then((response) => {
@@ -100,7 +102,6 @@ const Home = () => {
               <option value="2023">2023</option>
               <option value="2022">2022</option>
               <option value="2021">2021</option>
-              <option value="2020">2020</option>
             </select>
             <select
               className="block p-2 pl-10 text-sm text-white border border-gray-600 rounded-lg bg-gray-800 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
