@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Result from "./Result";
+import TermsAndConditions from "./TermsAndConditions";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ root.render(
         <App />
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/termsandconditions" element={<TermsAndConditions />} />
           <Route exact path="/result/:regn" element={<Result />} />
         </Routes>
       </div>
