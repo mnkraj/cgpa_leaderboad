@@ -17,6 +17,7 @@ const TermsAndConditions = () => {
           textAlign: "center",
           marginBottom: "20px",
           fontWeight: "bolder",
+          fontSize: "30px",
         }}
       >
         Terms and Conditions
