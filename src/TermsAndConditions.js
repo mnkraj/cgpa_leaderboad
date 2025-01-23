@@ -1,7 +1,7 @@
 import React from "react";
-import { Navigate,useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 const TermsAndConditions = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -93,8 +93,16 @@ const TermsAndConditions = () => {
       <p>
         While efforts are made to ensure the accuracy of the information
         displayed, the Website does not guarantee the completeness, reliability,
-        or accuracy of the CGPA data. Users are advised to cross-check the
-        information with the official academic records.
+        or accuracy of the CGPA data.<br />
+        The CGPA data displayed on this Website reflects the information
+        available on the institute’s result portal at the time of collection. If
+        a student has failed in the end-semester examinations, their CGPA may
+        show as "0" on the portal. However, if the student passes the
+        supplementary examination, the CGPA will only be updated on the portal
+        in the subsequent semester. As a result, the CGPA of "0" may not be
+        accurate and should not be considered a final representation of the
+        student's academic status. Users are encouraged to cross-check with the
+        official records for the most accurate information.
       </p>
 
       <h2
@@ -176,7 +184,7 @@ const TermsAndConditions = () => {
       </p>
       <div style={{ textAlign: "center", marginTop: "30px" }}>
         <button
-          onClick={() => navigate("/") }
+          onClick={() => navigate("/")}
           style={{
             backgroundColor: "#007BFF",
             color: "#fff",
