@@ -3,7 +3,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 const TermsAndConditions = () => {
   const navigate = useNavigate();
   return (
-    <div
+    <div className="bg-[#F5F5F5]">
+      <div
       style={{
         padding: "20px",
         maxWidth: "800px",
@@ -11,6 +12,7 @@ const TermsAndConditions = () => {
         fontFamily: "Arial, sans-serif",
         lineHeight: "1.6",
       }}
+      className="bg-[#F0F8FF] text-[#333333]"
     >
       <h1
         style={{
@@ -198,6 +200,7 @@ const TermsAndConditions = () => {
           Return to Home
         </button>
       </div>
+    </div>
     </div>
   );
 };
