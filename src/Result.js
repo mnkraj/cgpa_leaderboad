@@ -26,7 +26,10 @@ const Result = () => {
 
     // Step 1: Fetch the token first
     axios
-      .post(`${process.env.REACT_APP_BACKEND_LINK_1}/api/v1/getindividualresult`, { regn ,"isaksingtoken" : true })
+      .post(
+        `${process.env.REACT_APP_BACKEND_LINK_1}/api/v1/getindividualresult`,
+        { regn, isaksingtoken: true }
+      )
       .then((tokenResponse) => {
         if (!tokenResponse.data.success) {
           toast.error(`Result Portal Server Down OR Invalid Regn No: ${regn}`);
@@ -49,7 +52,10 @@ const Result = () => {
 
           fetchedSems.add(sem);
           return axios
-            .post(`${process.env.REACT_APP_BACKEND_LINK_1}/api/v1/getsemresult`, { token, sem })
+            .post(
+              `${process.env.REACT_APP_BACKEND_LINK_1}/api/v1/getsemresult`,
+              { token, sem }
+            )
             .then((semResponse) => {
               if (semResponse.data.success && semResponse.data.sgpa) {
                 setData((prevData) => ({
@@ -66,7 +72,10 @@ const Result = () => {
               }
             })
             .catch((error) => {
-              console.error(`Error fetching result for semester ${sem}:`, error);
+              console.error(
+                `Error fetching result for semester ${sem}:`,
+                error
+              );
             });
         };
 
@@ -101,7 +110,7 @@ const Result = () => {
       )}
       <Navbar search={search} setsearch={setsearch} disab={false} />
       <section className="bg-gray-900" style={{ minHeight: "75vh" }}>
-        {data.semresults.length > 0 && (
+        {data.name && (
           <div
             className="w-full xl:w-8/12 xl:mb-0 px-4 mx-auto"
             style={{
@@ -118,41 +127,46 @@ const Result = () => {
             </h2>
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
               <div className="block w-full overflow-x-auto">
-                <table className="bg-transparent w-full border-collapse mx-auto">
-                  <thead className="items-center">
-                    <tr>
-                      <th className="table-header text-center">Semester</th>
-                      <th className="table-header text-center">SGPA</th>
-                      <th className="table-header text-center">CGPA</th>
-                      <th className="table-header text-center">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.semresults.map((result, index) => (
-                      <tr
-                        key={index}
-                        className={index % 2 === 0 ? "even-row" : "odd-row"}
-                      >
-                        <td className="table-cell" style={{ width: "0%" }}>
-                          {result.sem}
-                        </td>
-                        <td className="table-cell">{result.sgpa}</td>
-                        <td className="table-cell">{result.cgpa}</td>
-                        <td className="table-cell text-center" style={{ width: "0%" }}>
-                          <a
-                            href={`${process.env.REACT_APP_RESULT_LINK_1}${data.secret}${process.env.REACT_APP_RESULT_LINK_2}${result.sem}${process.env.REACT_APP_RESULT_LINK_3}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
-                            download={`commanreport.pdf`}
-                          >
-                            View
-                          </a>
-                        </td>
+                {data.semresults.length > 0 && (
+                  <table className="bg-transparent w-full border-collapse mx-auto">
+                    <thead className="items-center">
+                      <tr>
+                        <th className="table-header text-center">Semester</th>
+                        <th className="table-header text-center">SGPA</th>
+                        <th className="table-header text-center">CGPA</th>
+                        <th className="table-header text-center">Action</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {data.semresults.map((result, index) => (
+                        <tr
+                          key={index}
+                          className={index % 2 === 0 ? "even-row" : "odd-row"}
+                        >
+                          <td className="table-cell" style={{ width: "0%" }}>
+                            {result.sem}
+                          </td>
+                          <td className="table-cell">{result.sgpa}</td>
+                          <td className="table-cell">{result.cgpa}</td>
+                          <td
+                            className="table-cell text-center"
+                            style={{ width: "0%" }}
+                          >
+                            <a
+                              href={`${process.env.REACT_APP_RESULT_LINK_1}${data.secret}${process.env.REACT_APP_RESULT_LINK_2}${result.sem}${process.env.REACT_APP_RESULT_LINK_3}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
+                              download={`commanreport.pdf`}
+                            >
+                              View
+                            </a>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
               </div>
             </div>
           </div>

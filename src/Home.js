@@ -19,8 +19,8 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-    let r1 = axios.get(`${process.env.REACT_APP_BACKEND_LINK_2}/api/v1/getresults`)
-    console.log(r1)
+    // let r1 = axios.get(`${process.env.REACT_APP_BACKEND_LINK_2}/api/v1/getresults`)
+    // console.log(r1)
     axios
       .get(`${process.env.REACT_APP_BACKEND_LINK_1}/api/v1/getresults`)
       .then((response) => {
