@@ -1,11 +1,11 @@
 import React from "react";
-import PulseLoader from "react-spinners/PulseLoader";
+import {ClipLoader} from "react-spinners";
 import "./Spinner.css"; // Import CSS file for styling
 
 const Spinner = () => {
   return (
     <div className="spinner-container">
-      <PulseLoader color="#363bd6" size={25} />
+      <ClipLoader color="#363bd6" size={70} />
     </div>
   );
 };
