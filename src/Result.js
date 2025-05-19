@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loading from "./Loadings";
+import {  HiEye } from "react-icons/hi";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import toast from "react-hot-toast";
@@ -9,6 +10,8 @@ import "./App.css";
 
 const Result = () => {
   const { regn } = useParams();
+    const [selectedSem, setSelectedSem] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const [loading1, setLoading1] = useState(false);
   const [data, setData] = useState({
     name: "",
@@ -66,6 +69,7 @@ const Result = () => {
                       sem: semResponse.data.sem,
                       sgpa: semResponse.data.sgpa,
                       cgpa: semResponse.data.cgpa,
+                      Marksheet: semResponse.data.marksheet,
                     },
                   ].sort((a, b) => a.sem - b.sem), // Maintain correct order
                 }));
@@ -111,30 +115,21 @@ const Result = () => {
       <Navbar search={search} setsearch={setsearch} disab={false} />
       <section className="bg-gray-900" style={{ minHeight: "75vh" }}>
         {data.name && (
-          <div
-            className="w-full xl:w-8/12 xl:mb-0 px-4 mx-auto"
-            style={{
-              paddingTop: "10px",
-              paddingBottom: "20px",
-              textAlign: "center",
-            }}
-          >
-            <h1 className="items-center text-white text-3xl mb-4">
-              {data.name}
-            </h1>
-            <h2 className="items-center text-gray-400 text-xl mb-8">
-              {data.regn}
-            </h2>
-            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+          <div className="w-full xl:w-8/12 px-4 mx-auto py-8 text-center">
+            <h1 className="text-white text-3xl mb-4">{data.name}</h1>
+            <h2 className="text-gray-400 text-xl mb-8">{data.regn}</h2>
+
+            <div className="relative flex flex-col bg-white w-full mb-6 shadow-lg rounded">
               <div className="block w-full overflow-x-auto">
                 {data.semresults.length > 0 && (
                   <table className="bg-transparent w-full border-collapse mx-auto">
-                    <thead className="items-center">
+                    <thead>
                       <tr>
                         <th className="table-header text-center">Semester</th>
                         <th className="table-header text-center">SGPA</th>
                         <th className="table-header text-center">CGPA</th>
-                        <th className="table-header text-center">Action</th>
+                        <th className="table-header text-center">Marksheet</th>
+                        <th className="table-header text-center">Link</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -143,23 +138,29 @@ const Result = () => {
                           key={index}
                           className={index % 2 === 0 ? "even-row" : "odd-row"}
                         >
-                          <td className="table-cell" style={{ width: "0%" }}>
-                            {result.sem}
-                          </td>
+                          <td className="table-cell" style={{ width: "0%" }}>{result.sem}</td>
                           <td className="table-cell">{result.sgpa}</td>
                           <td className="table-cell">{result.cgpa}</td>
-                          <td
-                            className="table-cell text-center"
-                            style={{ width: "0%" }}
-                          >
+                          <td className="table-cell text-center" style={{ width: "0%" }}>
+                            <button
+                              className="flex justify-center items-center text-xl text-blue-500 hover:text-blue-600 mx-auto"
+                              onClick={() => {
+                                setSelectedSem(result.sem);
+                                setShowModal(true);
+                              }}
+                            >
+                              <HiEye />
+                            </button>
+                          </td>
+                          <td className="table-cell text-center" style={{ width: "0%" }}>
                             <a
                               href={`${process.env.REACT_APP_RESULT_LINK_1}${data.secret}${process.env.REACT_APP_RESULT_LINK_2}${result.sem}${process.env.REACT_APP_RESULT_LINK_3}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
+                              className="text-white bg-blue-500 hover:bg-blue-600 font-medium rounded-lg text-sm px-5 py-2.5"
                               download={`commanreport.pdf`}
                             >
-                              View
+                              Visit
                             </a>
                           </td>
                         </tr>
@@ -172,6 +173,34 @@ const Result = () => {
           </div>
         )}
       </section>
+
+      {/* Modal Popup */}
+      {showModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+          onClick={() => setShowModal(false)}
+        >
+          <div
+            className="bg-white p-6 rounded-lg shadow-xl w-full max-w-3xl relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-2 right-4 text-2xl text-gray-500 hover:text-red-600"
+              onClick={() => setShowModal(false)}
+            >
+              &times;
+            </button>
+            <h3 className="text-xl font-bold text-center mb-4">
+              Semester {selectedSem} Marksheet
+            </h3>
+            <div
+              className="rounded-xl border border-gray-300 shadow-inner overflow-auto max-h-[70vh] p-4"
+              dangerouslySetInnerHTML={{ __html: data.regn.includes("2022") ? data.semresults[selectedSem - 3].Marksheet  :data.semresults[selectedSem - 1].Marksheet }}
+            ></div>
+          </div>
+        </div>
+      )}
+
       <Footer />
     </div>
   );
