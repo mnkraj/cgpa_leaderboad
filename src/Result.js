@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loading from "./Loadings";
-import {  HiEye } from "react-icons/hi";
+import { HiEye } from "react-icons/hi";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import toast from "react-hot-toast";
@@ -10,7 +10,7 @@ import "./App.css";
 
 const Result = () => {
   const { regn } = useParams();
-    const [selectedSem, setSelectedSem] = useState(null);
+  const [selectedSem, setSelectedSem] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [loading1, setLoading1] = useState(false);
   const [data, setData] = useState({
@@ -129,7 +129,9 @@ const Result = () => {
                         <th className="table-header text-center">SGPA</th>
                         <th className="table-header text-center">CGPA</th>
                         <th className="table-header text-center">Marksheet</th>
-                        <th className="table-header text-center">Link</th>
+                        <th className="table-header text-center">
+                          Result Link
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -138,10 +140,15 @@ const Result = () => {
                           key={index}
                           className={index % 2 === 0 ? "even-row" : "odd-row"}
                         >
-                          <td className="table-cell" style={{ width: "0%" }}>{result.sem}</td>
+                          <td className="table-cell" style={{ width: "0%" }}>
+                            {result.sem}
+                          </td>
                           <td className="table-cell">{result.sgpa}</td>
                           <td className="table-cell">{result.cgpa}</td>
-                          <td className="table-cell text-center" style={{ width: "0%" }}>
+                          <td
+                            className="table-cell text-center"
+                            style={{ width: "0%" }}
+                          >
                             <button
                               className="flex justify-center items-center text-xl text-blue-500 hover:text-blue-600 mx-auto"
                               onClick={() => {
@@ -152,7 +159,10 @@ const Result = () => {
                               <HiEye />
                             </button>
                           </td>
-                          <td className="table-cell text-center" style={{ width: "0%" }}>
+                          <td
+                            className="table-cell text-center"
+                            style={{ width: "0%" }}
+                          >
                             <a
                               href={`${process.env.REACT_APP_RESULT_LINK_1}${data.secret}${process.env.REACT_APP_RESULT_LINK_2}${result.sem}${process.env.REACT_APP_RESULT_LINK_3}`}
                               target="_blank"
@@ -181,7 +191,7 @@ const Result = () => {
           onClick={() => setShowModal(false)}
         >
           <div
-            className="bg-white p-6 rounded-lg shadow-xl w-full max-w-3xl relative"
+            className="bg-[#e5e7eb] p-8 rounded-lg shadow-xl w-full max-w-3xl relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -190,12 +200,17 @@ const Result = () => {
             >
               &times;
             </button>
-            <h3 className="text-xl font-bold text-center mb-4">
-              Semester {selectedSem} Marksheet
+            <h3 className="text-xl text-[#3B82F6] font-bold text-center mb-4">
+              {data.regn}/Sem{selectedSem}
             </h3>
+
             <div
-              className="rounded-xl border border-gray-300 shadow-inner overflow-auto max-h-[70vh] p-4"
-              dangerouslySetInnerHTML={{ __html: data.regn.includes("2022") ? data.semresults[selectedSem - 3].Marksheet  :data.semresults[selectedSem - 1].Marksheet }}
+              className="rounded-xl border bg-white border-gray-300 shadow-inner overflow-auto max-h-[70vh] p-4"
+              dangerouslySetInnerHTML={{
+                __html: data.regn.includes("2022")
+                  ? data.semresults[selectedSem - 3].Marksheet
+                  : data.semresults[selectedSem - 1].Marksheet,
+              }}
             ></div>
           </div>
         </div>
