@@ -205,7 +205,17 @@ const Result = () => {
             </h3>
 
             <div
-              className="rounded-xl border bg-white border-gray-300 shadow-inner overflow-auto max-h-[70vh] p-4"
+              className="rounded-xl border bg-white border-gray-300 shadow-inner overflow-auto max-h-[70vh] p-4 
+             [&_table]:w-full 
+             [&_table]:border 
+             [&_table]:border-gray-400 
+             [&_td]:border 
+             [&_td]:border-gray-300 
+             [&_td_table]:border-0 
+    [&_td_table_td]:border-0 
+             [&_td]:px-2 [&_td]:py-1 
+             [&_th]:border [&_th]:border-gray-400 
+             [&_th]:px-2 [&_th]:py-1"
               dangerouslySetInnerHTML={{
                 __html: data.regn.includes("2022")
                   ? data.semresults[selectedSem - 3].Marksheet
