@@ -19,7 +19,7 @@ const Navbar = ({ search, setsearch, disab }) => {
         <a href="/" className="flex items-center">
           <span className="self-center text-2xl font-bold whitespace-nowrap text-white">
             <TypeAnimation
-              sequence={["CGPA LEADERBOARD", 1000, "NIT JSR", 1000]}
+              sequence={["CGPA HUB", 1000, "NIT JSR", 1000]}
               wrapper="span"
               speed={50}
               style={{
