@@ -114,7 +114,7 @@ const Result = () => {
       })
       .catch((error) => {
         console.error("Error fetching token:", error);
-        toast.error(`Error fetching data: ${error.message}`);
+        toast.error("Result portal link (outside campus) not working....");
         setLoading1(false);
       });
   };
