@@ -111,6 +111,7 @@ const Home = () => {
               >
                 <option value="">All Branch</option>
                 <option value="UGCS">CSE</option>
+                <option value="CSCA">PG CSCA</option>
                 <option value="EE">EE</option>
                 <option value="ME">Mech</option>
                 <option value="EC">ECE</option>
@@ -118,7 +119,6 @@ const Home = () => {
                 <option value="PI">PIE</option>
                 <option value="MM">Meta</option>
                 <option value="CM">ECM</option>
-                <option value="CSCA">PG CSCA</option>
               </select>
             </div>
           )}
