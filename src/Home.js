@@ -110,7 +110,7 @@ const Home = () => {
                 onChange={(e) => setBranch(e.target.value)}
               >
                 <option value="">All Branch</option>
-                <option value="CS">CSE</option>
+                <option value="UGCS">CSE</option>
                 <option value="EE">EE</option>
                 <option value="ME">Mech</option>
                 <option value="EC">ECE</option>
