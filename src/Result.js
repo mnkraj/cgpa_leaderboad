@@ -30,7 +30,7 @@ const Result = () => {
     // Step 1: Fetch the token first
     axios
       .post(
-        `${process.env.REACT_APP_BACKEND_LINK_1}/api/v1/getindividualresult`,
+        `${process.env.REACT_APP_BACKEND_LINK_2}/api/v1/getindividualresult`,
         { regn, isaksingtoken: true }
       )
       .then((tokenResponse) => {
@@ -56,7 +56,7 @@ const Result = () => {
           fetchedSems.add(sem);
           return axios
             .post(
-              `${process.env.REACT_APP_BACKEND_LINK_1}/api/v1/getsemresult`,
+              `${process.env.REACT_APP_BACKEND_LINK_2}/api/v1/getsemresult`,
               { token, sem }
             )
             .then((semResponse) => {
