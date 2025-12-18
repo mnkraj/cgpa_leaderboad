@@ -84,21 +84,23 @@ const Result = () => {
         };
 
         if (regn.includes("2022")) {
-          // Fetch semesters 3 to 8 for 2022 batch
           fetchSemester(3)
             .then(() => fetchSemester(4))
             .then(() => fetchSemester(5))
             .then(() => fetchSemester(6))
+            .then(() => fetchSemester(7))
             .finally(() => setLoading1(false));
         } else if (regn.includes("2023")) {
           fetchSemester(1)
             .then(() => fetchSemester(2))
             .then(() => fetchSemester(3))
             .then(() => fetchSemester(4))
+            .then(() => fetchSemester(5))
             .finally(() => setLoading1(false));
         } else if (regn.includes("2024")) {
           fetchSemester(1)
             .then(() => fetchSemester(2))
+            .then(() => fetchSemester(3))
             .finally(() => setLoading1(false));
         } else {
           fetchSemester(1)
@@ -114,7 +116,7 @@ const Result = () => {
       })
       .catch((error) => {
         console.error("Error fetching token:", error);
-        toast.error("Result portal link (outside campus) not working....");
+        toast.error("`http://202.168.87.90/StudentPortal/Login.aspx`\n Server Down...");
         setLoading1(false);
       });
   };

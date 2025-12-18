@@ -99,10 +99,10 @@ const Home = () => {
                 onChange={(e) => setYear(e.target.value)}
               >
                 <option value="">All Year</option>
+                <option value="2024">2025</option>
                 <option value="2024">2024</option>
                 <option value="2023">2023</option>
                 <option value="2022">2022</option>
-                <option value="2021">2021</option>
               </select>
               <select
                 className="block p-2 pl-10 text-sm text-white border border-gray-600 rounded-lg bg-gray-800 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
@@ -111,7 +111,6 @@ const Home = () => {
               >
                 <option value="">All Branch</option>
                 <option value="UGCS">CSE</option>
-                <option value="CSCA">PG CSCA</option>
                 <option value="EE">EE</option>
                 <option value="ME">Mech</option>
                 <option value="EC">ECE</option>
