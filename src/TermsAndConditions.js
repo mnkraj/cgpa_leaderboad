@@ -79,11 +79,7 @@ const TermsAndConditions = () => {
       </h2>
       <p>
         If you do not want your CGPA to be made public on this Website, please
-        send an email or message to [
-        <a href="https://www.linkedin.com/in/mnkraj" style={{ color: "blue" }}>
-          https://www.linkedin.com/in/mnkraj
-        </a>
-        ] with your full name and registration number. Upon verification, your
+        send an email or message to the administrator with your full name and registration number. Upon verification, your
         CGPA will be promptly removed from the leaderboard.
       </p>
 
@@ -165,10 +161,10 @@ const TermsAndConditions = () => {
         <li>
           <strong>Profile:</strong>{" "}
           <a
-            href="https://www.linkedin.com/in/mnkraj"
+            href="https://www.instagram.com/_mnkraj?igsh=d2N5YXYxc3N6bzhs"
             style={{ color: "blue" }}
           >
-            https://www.linkedin.com/in/mnkraj
+            https://www.instagram.com/_mnkraj?igsh=d2N5YXYxc3N6bzhs
           </a>
         </li>
       </ul>

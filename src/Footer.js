@@ -44,7 +44,7 @@ const Footer = () => {
 
 
             <a
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/_mnkraj?igsh=d2N5YXYxc3N6bzhs"
               type="button"
               class="rounded-full bg-[#ac2bac] p-3 uppercase leading-normal text-white shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 dark:text-white"
               data-twe-ripple-init
@@ -98,14 +98,10 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div class="w-full bg-black/5  text-center">
-          Last Updated Dec 2025
-        </div>
+        <div class="w-full bg-black/5  text-center">Last Updated Dec 2025</div>
+        <div class="w-full bg-black/5  text-center">Developed by @mnkraj</div>
         <div class="w-full bg-black/5 p-4 text-center">
           © copyright 2024 NIT JSR
-        </div>
-        <div class="w-full bg-black/5 p-4 text-center">
-          Developed By mnkraj
         </div>
       </footer>
     </div>
