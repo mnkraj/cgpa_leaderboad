@@ -122,7 +122,7 @@ const Home = () => {
               </select>
             </div>
           )}
-          {filteredData.length > 0 && (
+          {filteredData.length > 0 ? (
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
               <div className="block w-full overflow-x-auto">
                 <table className="items-center bg-transparent w-full border-collapse">
@@ -225,6 +225,15 @@ const Home = () => {
                   </tbody>
                 </table>
               </div>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center bg-white w-full mb-6 shadow-lg rounded p-6 sm:p-8 md:p-12 min-h-96">
+              <div className="text-5xl sm:text-6xl md:text-7xl mb-4 sm:mb-6">
+                ⚠️
+              </div>
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-medium text-center">
+                Work in progress
+              </p>
             </div>
           )}
         </div>
