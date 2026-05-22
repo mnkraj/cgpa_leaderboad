@@ -15,6 +15,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [search, setsearch] = useState("");
   const [sortByCgpa, setSortByCgpa] = useState(false);
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,10 +31,12 @@ const Home = () => {
         setData(res);
         setFilteredData(res);
         setLoading(false);
+        setIsDataLoaded(true);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
         setLoading(false);
+        setIsDataLoaded(true);
       });
   }, []);
 
@@ -122,7 +125,7 @@ const Home = () => {
               </select>
             </div>
           )}
-          {filteredData.length > 0 ? (
+          {isDataLoaded && filteredData.length > 0 ? (
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
               <div className="block w-full overflow-x-auto">
                 <table className="items-center bg-transparent w-full border-collapse">
