@@ -231,11 +231,11 @@ const Home = () => {
             </div>
           ) }
           {isrequestcompleted && filteredData.length === 0 && (
-            <div className="flex flex-col items-center justify-center bg-gray-800 w-full mb-6 shadow-lg rounded py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 min-h-screen md:min-h-96 border border-gray-700">
+            <div className="flex flex-col items-center justify-center w-full mb-6 shadow-lg rounded py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 min-h-screen md:min-h-96">
               <div className="text-6xl sm:text-7xl md:text-8xl mb-6 sm:mb-8">
                 ⚠️
               </div>
-              <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 font-medium text-center leading-relaxed">
+              <p className="text-xl sm:text-2xl md:text-3xl text-white font-medium text-center leading-relaxed">
                 Work in progress
               </p>
             </div>
