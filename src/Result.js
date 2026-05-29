@@ -96,7 +96,8 @@ const Result = () => {
             .then(() => fetchSemester(2))
             .then(() => fetchSemester(3))
             .then(() => fetchSemester(4))
-            .then(() => fetchSemester(5))
+            .then(() => fetchSemester(5)) 
+            .then(() => fetchSemester(6))
             .finally(() => setLoading1(false));
         } else if (regn.includes("2024")) {
           fetchSemester(1)
