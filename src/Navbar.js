@@ -9,7 +9,7 @@ const Navbar = ({ search, setsearch, disab }) => {
   const handleResultPortalClick = (useLan) => {
     const url = useLan
       ? "http://172.16.1.17/StudentPortal/Login.aspx"
-      : "http://202.168.87.90/StudentPortal/Login.aspx";
+      : "http://192.172.245.90/StudentPortal/Login.aspx";
     window.open(url, "_blank");
   };
 
