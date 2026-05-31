@@ -103,6 +103,7 @@ const Result = () => {
           fetchSemester(1)
             .then(() => fetchSemester(2))
             .then(() => fetchSemester(3))
+            .then(() => fetchSemester(4))
             .finally(() => setLoading1(false));
         } else {
           fetchSemester(1)
